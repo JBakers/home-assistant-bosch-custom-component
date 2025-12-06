@@ -74,6 +74,7 @@ class StatisticHelper(BoschBaseSensor):
         return StatisticMetaData(
             has_mean=False,
             has_sum=True,
+            mean_type=None,
             name=f"Stats {self._name}",
             source=self._domain_name.lower(),
             statistic_id=self.statistic_id,
