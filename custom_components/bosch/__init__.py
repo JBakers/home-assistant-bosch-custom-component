@@ -236,15 +236,24 @@ class BoschGatewayEntry:
         _LOGGER.debug("Initializing Bosch integration.")
         self._update_lock = asyncio.Lock()
         BoschGateway = bosch.gateway_chooser(device_type=self._device_type)
-        self.gateway = BoschGateway(
-            session=async_get_clientsession(self.hass, verify_ssl=False)
+
+        # Create gateway in executor to avoid blocking SSL operations
+        session = (
+            async_get_clientsession(self.hass, verify_ssl=False)
             if self._protocol == HTTP
-            else None,
-            session_type=self._protocol,
-            host=self._host,
-            access_key=self._access_key,
-            access_token=self._access_token,
+            else None
         )
+
+        def create_gateway():
+            return BoschGateway(
+                session=session,
+                session_type=self._protocol,
+                host=self._host,
+                access_key=self._access_key,
+                access_token=self._access_token,
+            )
+
+        self.gateway = await self.hass.async_add_executor_job(create_gateway)
 
         async def close_connection(event) -> None:
             """Close connection with server."""
