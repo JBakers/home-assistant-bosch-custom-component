@@ -178,10 +178,10 @@ class EnergySensor(StatisticHelper):
         now = dt_util.now()
         diff = now - start
         if now.day == start.day:
-            _LOGGER.warn("Can't upsert today date. Try again tomorrow.")
+            _LOGGER.warning("Can't upsert today date. Try again tomorrow.")
             return
         if diff > timedelta(days=60):
-            _LOGGER.warn(
+            _LOGGER.warning(
                 "Update more than 60 days in past might take some time! Component will try to do that anyway!"
             )
         start_time = dt_util.start_of_local_day(start)
@@ -241,7 +241,7 @@ class EnergySensor(StatisticHelper):
             _LOGGER.debug("Last stats not exist. Trying to fetch ALL data.")
             all_stats = list((await self._bosch_object.fetch_all()).values())
             if not all_stats:
-                _LOGGER.warn("Stats not found.")
+                _LOGGER.warning("Stats not found.")
                 return
             self.append_statistics(stats=all_stats, sum=_sum)
             return

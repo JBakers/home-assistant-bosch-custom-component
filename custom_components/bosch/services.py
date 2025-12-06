@@ -52,7 +52,7 @@ def find_gateway_entry(hass: HomeAssistant, devices_id: str) -> list[ConfigEntry
                     continue
                 config_entries.extend(device_entries)
         else:
-            _LOGGER.warn(
+            _LOGGER.warning(
                 f"Device '{target}' not found in device registry"
             )
     bosch_gateway_entries = []

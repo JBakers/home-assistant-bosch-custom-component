@@ -1,4 +1,5 @@
 """Support for Bosch Thermostat Sensor."""
+from __future__ import annotations
 
 from bosch_thermostat_client.const import (
     ECUS_RECORDING,

@@ -1,4 +1,6 @@
 """Support for Bosch Thermostat Binary Sensor."""
+from __future__ import annotations
+
 import logging
 
 from bosch_thermostat_client.const import BINARY, ON, USED

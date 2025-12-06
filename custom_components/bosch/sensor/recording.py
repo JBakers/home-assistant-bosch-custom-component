@@ -95,10 +95,10 @@ class RecordingSensor(StatisticHelper):
         now = dt_util.now()
         diff = now - start
         if now.day == start.day:
-            _LOGGER.warn("Can't upsert today date. Try again tomorrow.")
+            _LOGGER.warning("Can't upsert today date. Try again tomorrow.")
             return
         if diff > timedelta(days=60):
-            _LOGGER.warn(
+            _LOGGER.warning(
                 "Update more than 60 days might take some time! Component will try to do that anyway!"
             )
         stats = await self.fetch_past_data(
@@ -202,7 +202,7 @@ class RecordingSensor(StatisticHelper):
                 start_time=start_time, stop_time=now
             )
             if not all_stats:
-                _LOGGER.warn("Stats not found.")
+                _LOGGER.warning("Stats not found.")
                 return
             all_stats = list(all_stats.values())
             self.append_statistics(stats=all_stats, sum=_sum, now=now)
