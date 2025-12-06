@@ -1,4 +1,6 @@
 """Bosch base entity."""
+from __future__ import annotations
+
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from .const import DEFAULT_MAX_TEMP, DEFAULT_MIN_TEMP, DOMAIN

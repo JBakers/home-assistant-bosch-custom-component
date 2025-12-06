@@ -1,4 +1,5 @@
 """Bosch sensor of circuit/zones entities."""
+from __future__ import annotations
 
 from ..const import CIRCUITS_SENSOR_NAMES, SIGNAL_SOLAR_UPDATE_BOSCH
 from .base import BoschBaseSensor

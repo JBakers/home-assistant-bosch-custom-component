@@ -1,4 +1,6 @@
 """Bosch NEFIT notification sensor."""
+from __future__ import annotations
+
 from .bosch import BoschSensor
 
 

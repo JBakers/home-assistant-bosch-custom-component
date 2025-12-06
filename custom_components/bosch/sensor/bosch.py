@@ -1,4 +1,6 @@
 """Bosch regular sensor."""
+from __future__ import annotations
+
 from ..const import SIGNAL_SENSOR_UPDATE_BOSCH
 from .base import BoschBaseSensor
 

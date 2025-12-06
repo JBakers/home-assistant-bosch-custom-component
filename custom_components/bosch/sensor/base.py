@@ -1,4 +1,5 @@
 """Base sensor component."""
+from __future__ import annotations
 
 import logging
 
